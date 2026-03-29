@@ -25,9 +25,9 @@ if uploaded_file:
     query = st.text_input("Ask a question:")
 
     if query:
-    with st.spinner("Generating answer..."):
-        results = retrieve_chunks(query, index, chunks, model)
-        answer = generate_answer(query, results)
+       with st.spinner("Generating answer..."):
+           results = retrieve_chunks(query, index, chunks, model)
+           answer = generate_answer(query, results)
 
     st.subheader("🤖 Answer")
     st.write(answer)
