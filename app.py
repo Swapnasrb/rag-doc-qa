@@ -4,6 +4,7 @@ import tempfile
 
 st.title("📄 AI Document Q&A (RAG)")
 st.write("Upload a document and ask questions")
+
 uploaded_file = st.file_uploader("Upload a TXT file", type=["txt"])
 
 if uploaded_file:
@@ -25,13 +26,13 @@ if uploaded_file:
     query = st.text_input("Ask a question:")
 
     if query:
-       with st.spinner("Generating answer..."):
-           results = retrieve_chunks(query, index, chunks, model)
-           answer = generate_answer(query, results)
+        with st.spinner("Generating answer..."):
+            results = retrieve_chunks(query, index, chunks, model)
+            answer = generate_answer(query, results)
 
-    st.subheader("🤖 Answer")
-    st.write(answer)
+        st.subheader("🤖 Answer")
+        st.write(answer)
 
-    st.subheader("📚 Source Passages")
-    for i, chunk in enumerate(results):
-        st.markdown(f"**Chunk {i+1}:** {chunk}")
+        st.subheader("📚 Source Passages")
+        for i, chunk in enumerate(results):
+            st.markdown(f"**Chunk {i+1}:** {chunk}")
